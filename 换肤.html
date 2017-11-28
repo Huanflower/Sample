@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    .box {
+      width: 980px;
+      height: 400px;
+      border: 1px solid red;
+      margin: 100px auto;
+    }
+
+    .add {
+      display: inline-block;
+      height: 50px;
+      line-height: 50px;
+      padding: 0 30px;
+      cursor: pointer;
+      margin: 3px;
+    }
+  </style>
+</head>
+<body>
+  <input type="color">
+  <div class="colorbox"></div>
+  <div class="box"></div>
+  <script>
+    var color_input = document.querySelector("input");
+    load();
+    // 点击选择颜色保存
+    color_input.onchange = function(){
+      var local = localStorage.getItem("colors");
+      var color_ary = [];
+      if(local == null){
+        color_ary[color_ary.length] = this.value;
+        localStorage.setItem("colors",JSON.stringify(color_ary));
+      }else{
+        local = JSON.parse(local);
+        for (var i = 0; i <local.length; i++) {
+          if(local[i] == this.value){
+              return;
+          }
+        }
+        local.push(this.value);
+        localStorage.clear();
+        localStorage.setItem("colors",JSON.stringify(local));
+      }
+      clear();
+      load();
+    }
+
+    function load(){
+      var local = localStorage.getItem("colors");
+      if(local == null){
+        alert("对不起，暂时无颜色");
+      }else{
+        local = JSON.parse(local);
+        for(var i = 0; i <local.length; i++){
+          var a = document.createElement("a");
+            a.classList.add("add");
+            a.innerHTML = local[i];
+            a.style.backgroundColor = local[i];
+            a.onclick = function(){
+              document.querySelector(".box").style.backgroundColor = this.innerHTML;
+            }
+              document.querySelector(".colorbox").appendChild(a);
+        }
+      }
+    }
+    function clear(){
+      var a = document.querySelectorAll(".colorbox a");
+      var colorBox = document.querySelector(".colorbox");
+      if(a.length == 0){
+
+      }else{
+        for(var i = 0; i<a.length; i++){
+            colorBox.removeChild(a[i]);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

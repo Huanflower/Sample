@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--<script>-->
+    <!--function myClient(){-->
+        <!--var obj=new Object();-->
+        <!--obj.width=window.innerWidth||document.body.clientWidth||document.documentElement-->
+        <!--return obj;-->
+    <!--}-->
+    <!--console.log(myClient().width);-->
+    <!--console.log(myClient().height);-->
+
+<!--</script>-->
+<script>
+    window.onresize=function(){
+        var wid=myClient().width;
+        if(wid>960){
+            document.body.style.backgroundColor="pink";
+        }else if(wid>640){
+            document.body.style.backgroundColor="orange";
+        }else{
+            document.body.style.backgroundColor="yellow";
+        }
+    }
+    function myClient() {
+        var obj = new Object();
+        obj.width = window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth
+        obj.height = window.innerHeight || document.body.clientHeight || document.documentElement.clientHeight
+        return obj;
+    }
+    console.log(myClient().width);
+</script>
+</body>
+</html>

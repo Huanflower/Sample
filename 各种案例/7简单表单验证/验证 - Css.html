@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      width: 250px;
+      height: 100px;
+      padding: 10px;
+      margin: 100px auto;
+      text-align: center;
+      border: 1px solid #000;
+    }
+    
+    .container input {
+      color: gray;
+    }
+    
+    .container span {
+      border: 1px solid #000;
+      width: 240px;
+      display: none;
+    }
+    
+    .container span.show {
+      display: block;
+    }
+    
+    .container span.right {
+      display: block;
+      border: 2px solid #6cff52;
+      background-color: #e5ffd1;
+    }
+    
+    .container span.wrong {
+      display: block;
+      border: 2px solid #f32b35;
+      background-color: #ffc1b4;
+    }
+  
+  </style>
+</head>
+<body>
+<div class="container">
+  用户名：<input id="ipt" type="text" value="请输入用户名">
+  <br>
+  <br>
+  <span id="span">请输入admin</span>
+</div>
+
+<script>
+
+  var ipt=document.getElementById("ipt");
+    var span=document.getElementById("span");
+
+//      ipt.onclick=function(){
+//        span.style.display="block";
+//      }
+//      获取焦点
+      ipt.onfocus=function(){
+        ipt.value="";
+        span.className="show";
+            if(ipt.innerHTML!="admin"){
+              span.innerHTML="请输入admin";
+            }
+        };
+//      失去焦点
+      ipt.onblur=function(){
+        if(ipt.value=="admin"){
+          span.innerHTML="输入正确";
+          span.className="right";
+        }else if( ipt.value==""){
+         ipt.value="请重新输入admin";
+        } else if(ipt.value!="admin"){
+          span.innerHTML="输入错误";
+          span.className="wrong";
+        }
+      }
+
+
+
+
+
+
+</script>
+</body>
+</html>

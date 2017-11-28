@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    canvas {
+      border: 1px solid red;
+    }
+</style>
+</head>
+<body>
+  <canvas width="600" height="400"></canvas>
+  <script>
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+    var s_angle = -90;
+    var num = random(2,6);
+    //console.log(num);
+    var total_num = 0;
+    var s_angle = 0;
+    var ary = [];
+    for(var i = 0; i < num ; i ++){
+      ary[i] = random(1,100);;
+      total_num += ary[i];
+    }
+    //每个数对应的角度
+    var arynum = [];
+    for(var i = 0; i < ary.length; i ++){
+      arynum[i] = 360/total_num*ary[i];
+    }
+    //console.log(ary);
+    //console.log(total_num);
+    //console.log(arynum);
+
+    //颜色
+    var colors = ["red","orange","yellow","green","blue","black","pink"];
+    //画饼
+    for(var i = 0; i < arynum.length; i ++){
+        ctx.beginPath();
+        ctx.moveTo(300,200);
+        ctx.arc(300,200,200,aTor(s_angle),aTor(s_angle+=arynum[i]));
+        ctx.fillStyle = colors[i];
+        ctx.fill();
+    }
+
+    //随机函数
+    function random(min,max) {
+      return Math.floor((max-min)*Math.random())+min;
+    }
+    //弧度
+    function aTor ( angle ) {
+        return  angle*Math.PI/180;
+    }
+  </script>
+</body>
+</html>

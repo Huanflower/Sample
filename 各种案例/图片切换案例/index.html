@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<img id="pic" src="images/01big.jpg" alt="">
+<button id="btn">切换图片</button>
+<script>
+  //点击时，img的图片地址会按照顺序进行更改
+  //分析规律
+  //"images/01big.jpg"
+  //"images/02big.jpg"
+  //"images/03big.jpg"
+  //"images/04big.jpg"
+  //"images/05big.jpg"
+//
+// function id(idName){
+//     return document.getElementById(idName);
+// }
+//    var pic=id("pic");
+//    var btn=id("btn");
+//    var flag=true;
+//    btn.onclick=function(){
+////
+//        if(flag){
+//            pic.src="images/01big.jpg";
+//            flag=false;
+//        }else {
+//            pic.src="images/02big.jpg";
+//            flag=true;
+//        }
+//    };
+
+    window.onload=function(){
+        var imgs=["images/01big.jpg","images/02big.jpg","images/03big.jpg","images/04big.jpg","images/05big.jpg"];
+        var len=imgs.length;
+        var count=0;
+        var pic=document.getElementById("pic");
+        var setImg=function(){
+            pic.src=imgs[count];
+            count=++count==len?0:count;
+        };
+        setImg();
+        document.getElementById("btn").onclick=function(){
+            setImg();
+        }
+    };
+
+
+</script>
+</body>
+</html>

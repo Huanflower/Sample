@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .nodeSmall {
+      width: 50px;
+      height: 50px;
+      background: url(images/bgs.png) no-repeat -159px -51px;
+      position: fixed;
+      right: 10px;
+      top: 40%;
+    }
+    
+    .erweima {
+      position: absolute;
+      top: 0;
+      left: -150px;
+    }
+    
+    .nodeSmall a {
+      display: block;
+      width: 50px;
+      height: 50px;
+    }
+    
+    .hide {
+      display: none;
+    }
+    
+    .show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<!--父盒子-->
+<div class="nodeSmall" id="node_small">
+  <a href="#"></a>
+  <!--二维码的盒子-->
+  <div class="erweima hide" id="er">
+    <img src="images/456.png" alt=""/>
+  </div>
+</div>
+
+<script>
+  //1 获取元素
+  var node_small = document.getElementById("node_small");
+  var er = document.getElementById("er");
+  
+// 2设置移入移出事件操作
+//  node_small.onmouseover=function(){
+//    er.className="erweima show";
+//  };
+//  node_small.onmouseout=function(){
+//    er.className="erweima hide";
+//  };
+  //3移入移出优化
+//  node_small.onmouseover=function(){
+//    var oldClassName=er.className;//获取到当前的类名
+//    //修改当前的部分内容，用replace（）；
+//    er.className=oldClassName.replace("hide","show");
+//  };
+//  node_small.onmouseout=function(){
+//    var oldClassName=er.className;
+//    er.className=oldClassName.replace("show","hide");
+//  };
+  //4继续优化
+//  node_small.onmouseover=function(){
+//    //获取到标签当前的类名
+//    var oldClass=er.className;
+//    //现将获取到的类名按照“”分割，再去看内部的每个类名部分
+//    var classArr=oldClass.split("");
+//    //从classArr中找到需要的部分，修改为新的类型
+//    var index=classArr.indexOf("hide");
+//    //设为新的类名值
+//    classArr[index]="show";
+//    //将设置完的类名合并后，设置给className属性
+//    er.className=classArr.join("");
+//  };
+
+  function changeClass(element,searchValue,replaceValue){
+    //获取到标签当前的类名
+    var oldClass=element.className;
+    //现将获取到的类名按照""分割，再去看内部的每个类名部分
+    var classArr=oldClass.split("");
+    //从classArr中找到需要的部分，修改为新的类型
+    var index=classArr.indexOf(searchValue);
+    //设为新的类名值
+    classArr[index]=replaceValue;
+    //将设置完的类名合并后，设置给className属性
+    element.className=classArr.join("");
+  }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

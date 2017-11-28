@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    div {
+      float: left;
+      margin-right: 80px;
+    }
+  </style>
+</head>
+<body>
+
+<div>
+  <img src="images/1.jpg" alt="">
+  <button>赞(0)</button>
+</div>
+
+<div>
+  <img src="images/2.jpg" alt="">
+  <button>赞(0)</button>
+</div>
+
+<div>
+  <img src="images/3.jpg" alt="">
+  <button>赞(0)</button>
+</div>
+
+<div>
+  <img src="images/4.jpg" alt="">
+  <button>赞(0)</button>
+</div>
+
+<script>
+  //1 获取元素
+  var pics = document.getElementsByTagName("img");//获取所有的图片
+  var btns = document.getElementsByTagName("button");//获取所有的按钮
+  
+  //2 遍历，给btns中的按钮设置点击事件
+  for (var i = 0; i < btns.length; i++) {
+    //每一个按钮的事件都需要使用一个单独的闭包进行计数
+    //btns[i].onclick = ;//得到一个函数体，并且对应一个闭包
+    btns[i].onclick=dianZan();
+  }
+
+  function dianZan(){
+    var count=0;
+
+    return function(){
+      count++;
+      console.log(count);
+      this.innerHTML="赞("+count+")";
+    };
+  }
+
+var dianZan1=dianZan();
+  dianZan1();
+
+
+//  var dianZan2=dianZan();
+//  dianZan2();
+
+</script>
+</body>
+</html>

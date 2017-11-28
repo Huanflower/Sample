@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    #box {
+      width: 360px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+      overflow: hidden;
+    }
+    
+    #box img {
+      vertical-align: middle;
+    }
+    
+    #box ul {
+      overflow: hidden;
+      border-top: 1px solid #ccc;
+    }
+    
+    #box li {
+      float: left;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <!--上面显示的大图-->
+  <img id="bigImg" src="images/01big.jpg" alt=""/>
+  <ul id="imgs">
+    <!--下面操作的小图片-->
+    <li><img src="images/01.jpg" alt="1"/></li>
+    <li><img src="images/02.jpg" alt="2"/></li>
+    <li><img src="images/03.jpg" alt="3"/></li>
+    <li><img src="images/04.jpg" alt="4"/></li>
+    <li><img src="images/05.jpg" alt="5"/></li>
+  </ul>
+</div>
+<script>
+
+  //观察要操作的图片与需要设置的地址之间的关系
+  //点击图片1   "images/01big.jpg"
+  //点击图片2   "images/02big.jpg"
+  //点击图片3   "images/03big.jpg"
+  //点击图片4   "images/04big.jpg"
+  //点击图片5   "images/05big.jpg"
+
+  var  bigImg =document.getElementById("bigImg")
+  var imgs =document.getElementById("imgs");
+  var imgs =document.getElementsByTagName("img");
+
+    for (var i = 0; i < imgs.length; i++) {
+      imgs[i].onclick=function(){
+      bigImg.src="images/0"+this.alt+"big.jpg";
+
+      };
+    }
+
+</script>
+</body>
+</html>
